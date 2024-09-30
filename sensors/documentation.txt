@@ -1,0 +1,11 @@
+/*
+For every meeting, put your documentation above the previous one. 
+For things that are relatively complicated or are a long process 
+(setting up raspberry pi, connecting to motor drivers), make a 
+separate document and put the steps into there. The hallmark of 
+good documentation is that someone who has no idea about anything 
+related to your project can learn about and replicate it.
+*/
+
+9/30/2024
+  - 
