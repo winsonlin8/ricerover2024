@@ -8,4 +8,5 @@ related to your project can learn about and replicate it.
 */
 
 9/30/2024
-  - 
+  - continued setting up ROS2 -- mostly everyone is setup and did the test_node tutorial 
+  - researched and understood servomotor code from last year r&d (subscribers/messengers)
