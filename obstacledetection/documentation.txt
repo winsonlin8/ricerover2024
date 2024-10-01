@@ -8,4 +8,18 @@ related to your project can learn about and replicate it.
 */
 
 9/30/2024
-  - 
+  - Mac: Editing ROS2 Code through VS Studio
+    - install extension within vs-code: Remote - SSH
+    - create ssh key with this line: set no password by clicking enter until it is created
+      ssh-keygen -t rsa -b 4096
+    - copy paste ssh key from this line: 
+      cat ~/.ssh/id_rsa.pub
+    - within multipass ros2 shell run this to edit the ssh keys file: 
+      nano ~/.ssh/authorized_keys
+    - copy paste the ssh key within a new line of the nano file
+    - run these lines within multipass after editing the authorized_keys file
+      chmod 700 ~/.ssh
+      chmod 600 ~/.ssh/authorized_keys
+    - now try to connect via ssh to the multipass shell with this in the mac terminal
+      ssh ubuntu@192.168.64.2
+    - if that works, connect via ssh in VS Code from the bottom left button and connect with the same line as above
