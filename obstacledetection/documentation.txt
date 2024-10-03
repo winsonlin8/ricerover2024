@@ -7,6 +7,12 @@ good documentation is that someone who has no idea about anything
 related to your project can learn about and replicate it.
 */
 
+10/2/2024
+- Webots:
+- attempted to get ros controllers to communicate with Webots
+- tried solving by changing firewall settings
+- still working/trying to solve issue.
+
 9/30/2024
   - Mac: Editing ROS2 Code through VS Studio
     - install extension within vs-code: Remote - SSH
