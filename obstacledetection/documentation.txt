@@ -11,7 +11,14 @@ related to your project can learn about and replicate it.
 - Webots:
 - attempted to get ros controllers to communicate with Webots
 - tried solving by changing firewall settings
-- still working/trying to solve issue.
+- context: Cameron and Israel (me) are trying to use ROS2 on Webots
+  - however the Windows version of Webots doesn't support ROS2, only the Linux version :(
+  - so what we're trying to do is run the Webots program on Windows side (to make use of graphics drivers/hardware acceleration for rendering and physics)
+  - while running ROS2 Webots stuff on WSL linux side.
+  - however the Webots Windows client can't connect to the WSL Linux ROS2 robot nodes, most likely due to a Windows Firewall conflict.
+  - Here's the tutorial we're following: https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots/Installation-Windows.html)
+  - GitHub issue that's same as us: https://github.com/cyberbotics/webots_ros2/issues/759
+- still working/trying to solve issue as of 10/2/24.
 
 9/30/2024
   - Mac: Editing ROS2 Code through VS Studio
