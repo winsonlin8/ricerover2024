@@ -7,8 +7,12 @@ good documentation is that someone who has no idea about anything
 related to your project can learn about and replicate it.
 */
 
-10/9/2024
-- 
+10/9/2024 (Eric)
+- Attempted to fix openCV display issues
+  - not firewall issue
+  - not image sending issue
+  - can't display window through ros2 for some reason, that seems to be the only issue
+    - maybe it's an ubuntu vm issue or an ssh forwarding issue, but it just can't open the window
 
 10/7/2024 (winson)
 - tried to get gazebo and webots up
@@ -42,6 +46,8 @@ https://automaticaddison.com/getting-started-with-opencv-in-ros-2-foxy-fitzroy-p
     - Once streaming the webcam, you need to replace the webcam id from 0 in the python code to udp://@:1234
     self.cap = cv2.VideoCapture('udp://@:1234')
     - Image publisher and subscriber works, but doesn't display the webcam footage yet as of 10/2/24
+    - Keep in mind, need to run subscriber with the following line to keep it from crashing because of no window popup
+    xvfb-run -a ros2 run cv_basics img_subscriber
 
 9/30/2024
   - Mac: Editing ROS2 Code through VS Studio (Eric Grun)
