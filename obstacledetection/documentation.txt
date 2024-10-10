@@ -7,8 +7,44 @@ good documentation is that someone who has no idea about anything
 related to your project can learn about and replicate it.
 */
 
+10/9/2024
+- 
+
+10/7/2024 (winson)
+- tried to get gazebo and webots up
+- documented both my efforts here: 
+  - Gazebo: https://docs.google.com/document/d/1VhbPSCJuqp6pfLCHEYAJm6LyN3EDYJzz1D0w2VvSqWE/edit 
+  - Webots: https://docs.google.com/document/d/1WJeDCwA8Hf5d19iUAJH6PS8BVx5zR-uCibAvhBIBd_E/edit
+
+10/2/2024
+- Webots:
+- attempted to get ros controllers to communicate with Webots
+- tried solving by changing firewall settings
+- context: Cameron and Israel (me) are trying to use ROS2 on Webots
+  - however the Windows version of Webots doesn't support ROS2, only the Linux version :(
+  - so what we're trying to do is run the Webots program on Windows side (to make use of graphics drivers/hardware acceleration for rendering and physics)
+  - while running ROS2 Webots stuff on WSL linux side.
+  - however the Webots Windows client can't connect to the WSL Linux ROS2 robot nodes, most likely due to a Windows Firewall conflict.
+  - Here's the tutorial we're following: https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots/Installation-Windows.html)
+  - GitHub issue that's same as us: https://github.com/cyberbotics/webots_ros2/issues/759
+- still working/trying to solve issue as of 10/2/24.
+
+- OpenCV + ROS2 integration using AutomaticAddison tutorial: (Eric Grun)
+https://automaticaddison.com/getting-started-with-opencv-in-ros-2-foxy-fitzroy-python/
+  - Webcam integration through Multipass: 
+    - Need to stream webcam to multipass instance using ffmpg
+    brew install ffmpg
+    - Then can stream to the multipass instance with this: 
+    ffmpeg -f avfoundation -framerate 30 -video_size 640x480 -i "0" -f mpegts udp://192.168.64.2:1234
+    - (NOTE: replace 192.168.64.2 with the IP address of the multipass instance)
+      - can find IP address in macOS terminal with: 
+      multipass list
+    - Once streaming the webcam, you need to replace the webcam id from 0 in the python code to udp://@:1234
+    self.cap = cv2.VideoCapture('udp://@:1234')
+    - Image publisher and subscriber works, but doesn't display the webcam footage yet as of 10/2/24
+
 9/30/2024
-  - Mac: Editing ROS2 Code through VS Studio
+  - Mac: Editing ROS2 Code through VS Studio (Eric Grun)
     - install extension within vs-code: Remote - SSH
     - create ssh key with this line: set no password by clicking enter until it is created
       ssh-keygen -t rsa -b 4096
