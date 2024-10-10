@@ -14,3 +14,7 @@ related to your project can learn about and replicate it.
   - familiarized ourselves with motor https://www.robotis.us/x-series/
   - researched motor controllers and driver 
   - put lots of links and resources in the google doc 
+10/09/2024
+  - researched how to communicate with arduino with raspberry pi 
+  - https://roboticsbackend.com/raspberry-pi-arduino-serial-communication/#What_is_Serial_communication_with_UART
+  - caught up members with installing ros2 / demo node
