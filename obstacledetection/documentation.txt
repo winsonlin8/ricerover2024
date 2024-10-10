@@ -7,6 +7,15 @@ good documentation is that someone who has no idea about anything
 related to your project can learn about and replicate it.
 */
 
+10/9/2024
+- 
+
+10/7/2024 (winson)
+- tried to get gazebo and webots up
+- documented both my efforts here: 
+  - Gazebo: https://docs.google.com/document/d/1VhbPSCJuqp6pfLCHEYAJm6LyN3EDYJzz1D0w2VvSqWE/edit 
+  - Webots: https://docs.google.com/document/d/1WJeDCwA8Hf5d19iUAJH6PS8BVx5zR-uCibAvhBIBd_E/edit
+
 10/2/2024
 - Webots:
 - attempted to get ros controllers to communicate with Webots
