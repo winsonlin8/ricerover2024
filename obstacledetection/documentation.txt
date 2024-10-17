@@ -7,6 +7,13 @@ good documentation is that someone who has no idea about anything
 related to your project can learn about and replicate it.
 */
 
+10/16/24
+- started using Webots without ROS
+- used existing moon simulation
+- need to add obstacles
+- sojouner keeps falling through the moon
+  - next meeting, make our own moon
+
 10/9/2024 (Eric)
 - Attempted to fix openCV display issues
   - not firewall issue
