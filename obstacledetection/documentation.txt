@@ -7,6 +7,15 @@ good documentation is that someone who has no idea about anything
 related to your project can learn about and replicate it.
 */
 
+10/21/24 (Eric)
+- Tried running ros2 on raspberry pi
+- if running into issue with ros2 not working do this: 
+  - echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+  - source ~/.bashrc
+- camera not displaying on raspberry pi, may be due to high resolution (480 x 240) might be too much unfortunately
+  - camera is recognized, but can't display
+
+
 10/16/24
 - started using Webots without ROS
 - used existing moon simulation
