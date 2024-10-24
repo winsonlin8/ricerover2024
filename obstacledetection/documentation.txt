@@ -6,6 +6,12 @@ separate document and put the steps into there. The hallmark of
 good documentation is that someone who has no idea about anything 
 related to your project can learn about and replicate it.
 */
+10/23/24 (Eric + Simar)
+- Tried running camera on raspberry pi, it crashed the whole pi
+- not nearly enough specs to run the camera
+- researching how to do obstacle detection on rough terrain
+  - could try depth plane-fitting with the depth sensing camera
+  - could try YOLO for image obstacle detection for the ice
 
 10/23/24 (Winson)
 - made moon
