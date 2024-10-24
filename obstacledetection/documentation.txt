@@ -6,6 +6,13 @@ separate document and put the steps into there. The hallmark of
 good documentation is that someone who has no idea about anything 
 related to your project can learn about and replicate it.
 */
+10/23/24 (Israel)
+- Went through tutorials for Webots to prepare a custom Rover model.
+- Also tried running the camera on a different laptop (high performance with an RTX 4050) but it still didn't work
+  - I could only get the first frame to display, with the depth and RGB camera window showing the first frame
+  - Could be an issue with the cable, since the RealSense software detects it as a USB 2.1 cable. 
+  - I don't have a USB 3.2 cable to test with, but that could be the issue as the camera sends a lot of data and needs high bandwidth?
+
 10/23/24 (Eric + Simar)
 - Tried running camera on raspberry pi, it crashed the whole pi
 - not nearly enough specs to run the camera
