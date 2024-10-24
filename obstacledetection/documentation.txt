@@ -7,6 +7,13 @@ good documentation is that someone who has no idea about anything
 related to your project can learn about and replicate it.
 */
 
+10/23/24 (Winson)
+- made moon
+  - looks bad bc it's green and I think the rover will still fall through
+  - will keep working on it
+- made ice block
+  - i think the ice blocks will only work locally, I will upload the ice jpg I used later
+
 10/21/24 (Eric)
 - Tried running ros2 on raspberry pi
 - if running into issue with ros2 not working do this: 
@@ -15,8 +22,7 @@ related to your project can learn about and replicate it.
 - camera not displaying on raspberry pi, may be due to high resolution (480 x 240) might be too much unfortunately
   - camera is recognized, but can't display
 
-
-10/16/24
+10/16/24 (Winson)
 - started using Webots without ROS
 - used existing moon simulation
 - need to add obstacles
