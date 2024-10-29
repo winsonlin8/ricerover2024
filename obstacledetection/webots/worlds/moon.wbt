@@ -1,10 +1,12 @@
 #VRML_SIM R2023b utf8
 
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/nasa/protos/Sojourner.proto"
+
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.05949165472577355 -0.0707763225139795 -0.9957165536383266 1.1262051248363418
-  position -299.10066319032865 593.553394413055 -29.765440309142196
+  orientation -0.24049853822182043 -0.06039993393428109 0.968768445550278 3.5629524242407107
+  position 584.2971475552075 270.9464276542782 300.279085594999
   exposure 10
 }
 DEF EARTH Pose {
@@ -54,107 +56,21 @@ Background {
   ]
   luminosity 10
 }
-Transform {
-  translation 1 1 0
-  scale 10 0.95 1
-  children [
-    Shape {
-      appearance Appearance {
-        texture ImageTexture {
-          url [
-            "../../ice texture.png"
-          ]
-        }
-      }
-      geometry Box {
-        size 5 5 1
-      }
-    }
-  ]
-}
-Transform {
-  translation 40 40 0
-  scale 1 0.95 1
-  children [
-    Shape {
-      appearance Appearance {
-        texture ImageTexture {
-          url [
-            "../../ice texture.png"
-          ]
-        }
-      }
-      geometry Box {
-        size 5 5 1
-      }
-    }
-  ]
-}
-Transform {
-  translation -40 -40 0
-  scale 1 0.95 1
-  children [
-    Shape {
-      appearance Appearance {
-        texture ImageTexture {
-          url [
-            "../../ice texture.png"
-          ]
-        }
-      }
-      geometry Box {
-        size 5 5 1
-      }
-    }
-  ]
-}
-Transform {
-  translation 10 10 10
-  scale 20 20 20
-  children [
-    Shape {
-      appearance Appearance {
-        texture ImageTexture {
-        }
-      }
-      geometry Sphere {
-        radius 0.1
-      }
-    }
-  ]
-}
-Transform {
-  translation -10 10 10
-  scale 20 20 20
-  children [
-    Shape {
-      appearance Appearance {
-        texture ImageTexture {
-          url [
-            "../../ice texture.png"
-          ]
-        }
-      }
-      geometry Cylinder {
-        height 0.1
-        radius 0.05
-      }
-    }
-  ]
-}
 DEF Moon_Surface Transform {
-  scale 0.2 0.2 1
+  scale 0.3 0.3 2.5
   children [
     DEF GROUND Shape {
       appearance PBRAppearance {
-        baseColor 0.286275 0.117647 0.0745098
+        baseColor 0.7 0.1 0.5
         baseColorMap ImageTexture {
           url [
             "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/samples/demos/worlds/textures/moon/moon_ground.jpg"
           ]
+          filtering 2
         }
         roughness 1
-        metalness 0
+        metalness 0.5
+        emissiveIntensity 0.005
       }
       geometry IndexedFaceSet {
         coord DEF coord_Plane Coordinate {
@@ -177,3 +93,32 @@ DEF Moon_Surface Transform {
     }
   ]
 }
+Sojourner {
+  hidden position_0_0 -3.924380253266296e-12
+  hidden position_0_1 1.9510091553753412e-12
+  hidden position_0_2 4.770211217839789e-14
+  hidden position_0_3 1.9564732955501544e-12
+  hidden position_1_0 0.14682301141407827
+  hidden rotation_2 0 0 1 0.14682301141407722
+  hidden position_2_0 -4.637697008084374e-13
+  hidden position_2_1 2.3807394893325706
+  hidden position_3_0 2.3807394893325746
+  hidden rotation_4 0 0 -0.9999999999999999 2.3807394893325746
+  hidden rotation_5 0 0 -0.9999999999999999 2.3807394893325706
+  hidden position_6_0 1.2405716022285564e-13
+  hidden position_7_0 2.380726784144887
+  hidden rotation_8 0 0 -1 2.380726784144887
+  hidden position_9_0 0.14657608903113
+  hidden rotation_10 0 0 1 0.14657608903112934
+  hidden position_10_0 4.929190246997408e-13
+  hidden position_10_1 2.380739469366156
+  hidden position_11_0 2.380739469366157
+  hidden rotation_12 0 0 -1 2.380739469366157
+  hidden rotation_13 0 0 -0.9999999999999999 2.380739469366156
+  hidden position_14_0 7.372793323312911e-14
+  hidden position_15_0 2.380726784144889
+  hidden rotation_16 0 0 -1 2.380726784144889
+  translation 70 0.000965281 5
+  rotation 0.0003707446983361476 0.00042202366578947417 -0.9999998422221845 1.5707984165166928
+}
+
