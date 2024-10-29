@@ -6,6 +6,12 @@ separate document and put the steps into there. The hallmark of
 good documentation is that someone who has no idea about anything 
 related to your project can learn about and replicate it.
 */
+10/28/24 (Eric + Simar)
+- Researched a method using OpenCV called Surface Matching
+  - It creates a map of objects and obstacles of a 3d scene using a depth sensing camera
+  - we need the camera to work before we can implement it, found out the usb cable is the issue
+    - it kinda works on the lab computer
+
 10/23/24 (Israel)
 - Went through tutorials for Webots to prepare a custom Rover model.
 - Also tried running the camera on a different laptop (high performance with an RTX 4050) but it still didn't work
