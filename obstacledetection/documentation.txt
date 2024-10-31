@@ -6,6 +6,16 @@ separate document and put the steps into there. The hallmark of
 good documentation is that someone who has no idea about anything 
 related to your project can learn about and replicate it.
 */
+
+10/30/24 (Eric)
+- tried setting up surface matching in python
+- realsense cam needs libraries on mac
+  - having issues downloading it
+  - it requires python 3.7, which is deprecated for conda on macs, have to use pyenv instead
+  - realsense sdk download having issues as well
+    - https://github.com/IntelRealSense/librealsense/blob/master/doc/installation_osx.md 
+    - idk why it's not working
+
 10/28/24 (Eric + Simar)
 - Researched a method using OpenCV called Surface Matching
   - It creates a map of objects and obstacles of a 3d scene using a depth sensing camera
