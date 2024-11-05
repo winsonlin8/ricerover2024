@@ -1,114 +1,96 @@
-/*
- * Copyright 1996-2023 Cyberbotics Ltd.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+#VRML_SIM R2023b utf8
 
-/*
- * Description:   A controller for the Koala robot which makes it turn on place
- */
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/UnevenTerrain.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/SandyGround.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/nasa/protos/Sojourner.proto"
 
-#include <stdio.h>
-#include <string.h>
-#include <webots/distance_sensor.h>
-#include <webots/keyboard.h>
-#include <webots/motor.h>
-#include <webots/robot.h>
-
-#define TIME_STEP 64
-
-int main() {
-  WbDeviceTag ir[16];
-  WbDeviceTag left_motor, right_motor;
-  int manual_control = 0;
-  int i, j;
-  const char *robot_name;
-  double speed[2];
-  double sensor_value[16];
-  double kUnit = 8.24;
-  double matrix[2][16] = {{3, -18, -15, -15, -5, -5, 4, 4, 6, 6, 4, 4, 4, 4, 3, -18},
-                          {-18, 3, 4, 4, 4, 4, 6, 6, 4, 4, -5, -5, -15, -15, -18, 3}};
-
-  wb_robot_init();
-  robot_name = wb_robot_get_name();
-
-  if (strncmp(robot_name, "koala", 5) == 0) {
-    for (i = 0; i < 16; i++) {
-      char sensor_name[16];
-      sprintf(sensor_name, "ds%d", i);
-      ir[i] = wb_robot_get_device(sensor_name);
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.14426930581795583 0.0008701632117043127 0.98953807921413 3.1296755575032744
+  position 21.0349336308888 0.9999380232232988 4.810145877126078
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+UnevenTerrain {
+  appearance SandyGround {
+    colorOverride 0.368627 0.368627 0.368627
+    textureTransform TextureTransform {
+      scale 50 50
     }
   }
-
-  for (i = 0; i < 16; i++)
-    wb_distance_sensor_enable(ir[i], TIME_STEP);
-
-  left_motor = wb_robot_get_device("left wheel motor");
-  right_motor = wb_robot_get_device("right wheel motor");
-  wb_motor_set_position(left_motor, INFINITY);
-  wb_motor_set_position(right_motor, INFINITY);
-  wb_motor_set_velocity(left_motor, 0.0);
-  wb_motor_set_velocity(right_motor, 0.0);
-
-  wb_keyboard_enable(TIME_STEP);
-  printf("You can drive this robot by using the arrow keys of your keyboard\n");
-
-  while (wb_robot_step(TIME_STEP) != -1) {
-    for (i = 0; i < 16; i++)
-      sensor_value[i] = wb_distance_sensor_get_value(ir[i]);
-
-    for (i = 0; i < 2; i++) {
-      speed[i] = 80;
-      for (j = 0; j < 16; j++)
-        speed[i] += kUnit * matrix[i][j] * sensor_value[j] / 200.0;
-      speed[i] /= 50;
-    }
-
-    const int key = wb_keyboard_get_key();
-
-    if ((key >= 0) && !manual_control)
-      manual_control = 1;
-
-    if (manual_control) {
-      switch (key) {
-        case WB_KEYBOARD_DOWN:
-          speed[0] = -1;
-          speed[1] = -1;
-          break;
-        case WB_KEYBOARD_UP:
-          speed[0] = 1;
-          speed[1] = 1;
-          break;
-        case WB_KEYBOARD_LEFT:
-          speed[0] = -1;
-          speed[1] = 1;
-          break;
-        case WB_KEYBOARD_RIGHT:
-          speed[0] = 1;
-          speed[1] = -1;
-          break;
-        case 0:
-          speed[0] = 0;
-          speed[1] = 0;
-      }
-    }
-
-    /* Set the motor speeds */
-    wb_motor_set_velocity(left_motor, speed[0]);
-    wb_motor_set_velocity(right_motor, speed[1]);
-  }
-
-  wb_robot_cleanup();
-
-  return 0;
+}
+Sojourner {
+  hidden position_0_0 1.5574263108578507e-05
+  hidden position_0_1 1.1481527319554837e-05
+  hidden position_0_2 8.202714622302355e-06
+  hidden position_0_3 -6.783830073388694e-06
+  hidden linearVelocity_0 -0.0376703311233136 -0.004553414086212735 -0.0021141721514504027
+  hidden angularVelocity_0 -0.0015517101057018392 -0.002166897925535589 0.03266618470828291
+  hidden rotation_1 0.9975059555716971 0.049909260657682045 -0.049909260659711734 1.5732932226397054
+  hidden position_1_0 0.05692481867512483
+  hidden linearVelocity_1 -0.031244730842432747 -0.002282885798337724 -0.001647350344243953
+  hidden angularVelocity_1 -0.0015420404654195277 -0.0023328589670623696 0.03265462623485493
+  hidden rotation_2 0 0 1 0.056924818675123216
+  hidden position_2_0 -0.3999994266483151
+  hidden position_2_1 11.02661453971836
+  hidden linearVelocity_2 -0.03233928381395712 0.003478214550615911 -0.0013016484101154233
+  hidden angularVelocity_2 -0.0015519786101367867 -0.0021590281341902027 0.032667163219219156
+  hidden rotation_3 0 -1 0 0.3999994266483156
+  hidden position_3_0 8.130371450613996
+  hidden linearVelocity_3 -0.033262616253844655 0.006795532696865478 -0.0011266615621042218
+  hidden angularVelocity_3 -0.0015518880649013625 -0.0021591109621854235 0.032667167470553614
+  hidden rotation_4 0 0 1 4.435999163745176
+  hidden linearVelocity_4 -0.031564225829875975 0.00663710737196472 -0.0010568484178821746
+  hidden angularVelocity_4 -0.20291558064873996 -0.5658380998207533 -0.008654864603031099
+  hidden rotation_5 0 0 1 1.5397560746408137
+  hidden linearVelocity_5 -0.03138486515108326 -0.0020423633307698605 -0.0016209513781504077
+  hidden angularVelocity_5 0.02991357700915376 -0.5451388330177338 -0.0059517539477103735
+  hidden rotation_6 0.9975057518109294 -0.04991129683730584 0.04991129683880215 1.5732934269092893
+  hidden position_6_0 0.4000006226381356
+  hidden linearVelocity_6 -0.030959133155581558 -0.007445290662950939 -0.001991142533400746
+  hidden angularVelocity_6 -0.0015490502714092516 -0.0022100113477518247 0.032662985942775065
+  hidden rotation_7 0 0.9999999999999999 0 0.4000006226381354
+  hidden position_7_0 3.714170222927169
+  hidden linearVelocity_7 -0.03251588448786431 -0.009634728574162556 -0.0022130803375242938
+  hidden angularVelocity_7 -0.0015489506833464115 -0.002210084367308108 0.03266296192933279
+  hidden rotation_8 0 0 -1 3.714170222927169
+  hidden linearVelocity_8 -0.03106361989034793 -0.008762487222883022 -0.0020851624327953046
+  hidden angularVelocity_8 0.26103369153983397 -0.5416715255457148 0.028936751943823356
+  hidden rotation_9 0.9975055885661339 0.04991292808092752 -0.049912928081996516 1.5732935905617575
+  hidden position_9_0 0.06703564251790707
+  hidden linearVelocity_9 -0.0443198261017902 -0.002993774891031092 -0.0023191027841788295
+  hidden angularVelocity_9 -0.0015458044581652215 -0.002276146351358715 0.032657877207982855
+  hidden rotation_10 0 0 1 0.06703564251790943
+  hidden position_10_0 -0.22700005341467033
+  hidden position_10_1 7.9861172372897
+  hidden linearVelocity_10 -0.043914577895823446 0.002850316045292524 -0.0019208013325885541
+  hidden angularVelocity_10 -0.001566353968102717 -0.0019244737187597291 0.03268263599265215
+  hidden rotation_11 0 -1 0 0.22700005341467006
+  hidden position_11_0 6.759529113919192
+  hidden linearVelocity_11 -0.04304898385255375 0.005283927211637767 -0.0017360009126227071
+  hidden angularVelocity_11 -0.0015665802924876913 -0.0019244943470518117 0.03268260485770709
+  hidden rotation_12 0 0 0.9999999999999999 5.806841500439981
+  hidden linearVelocity_12 -0.0446005744891178 0.005995173406703074 -0.0017684877484572224
+  hidden angularVelocity_12 -0.10263049598468156 -0.5917176281178167 -0.011341973277943635
+  hidden rotation_13 0 0 1 4.580253377069473
+  hidden linearVelocity_13 -0.04419014901432196 -0.0027159057827551253 -0.0022616394312538752
+  hidden angularVelocity_13 0.04225656787608171 -0.7583397778010846 -0.021099299995909846
+  hidden rotation_14 0.9975048423518058 -0.04992038403692216 0.04992038403603807 1.5732943386399545
+  hidden position_14_0 0.22699970332765979
+  hidden linearVelocity_14 -0.04404232988653464 -0.008155141590870496 -0.0026520317642513514
+  hidden angularVelocity_14 -0.0015540689475373407 -0.002125816333148271 0.03266910529331655
+  hidden rotation_15 0 0.9999999999999999 0 0.22699970332766045
+  hidden position_15_0 3.021783940476028
+  hidden linearVelocity_15 -0.04223826614619332 -0.009159808025234797 -0.0026316172677927708
+  hidden angularVelocity_15 -0.0015540769668798502 -0.002125699701469064 0.03266911352780572
+  hidden rotation_16 0 0 -1 3.021783940476028
+  hidden linearVelocity_16 -0.04383265436731116 -0.00945295866722297 -0.0027265717860464117
+  hidden angularVelocity_16 0.16550756281672332 -0.5780291639306723 0.011738850371373745
+  translation 0.4567484142819599 -0.039771271772549056 3.3383814673738677
+  rotation 0.6910723544412861 -0.4809459009506745 0.5395461437965443 0.10473578546683562
 }
