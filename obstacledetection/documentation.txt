@@ -7,6 +7,13 @@ good documentation is that someone who has no idea about anything
 related to your project can learn about and replicate it.
 */
 
+11/6/24 (Eric)
+- Got the camera working on the windows computer with 15 fps pretty effectively
+- The issue was we had to click "Enable Firmware Logging" in order for it to work better
+- also diagnosed the issue as the usb cable can't transfer the data fast enough--it recognizes the camera as a usb2.1 connection, not 3.2 like it should be
+- Put an order request for a usb 3.2 cable for the camera
+- currently able to display a point cloud in the realsense viewer software
+
 10/30/24 (Eric)
 - tried setting up surface matching in python
 - realsense cam needs libraries on mac
