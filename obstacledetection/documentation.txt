@@ -6,6 +6,22 @@ separate document and put the steps into there. The hallmark of
 good documentation is that someone who has no idea about anything 
 related to your project can learn about and replicate it.
 */
+11/19/24 (Israel)
+- Worked on installing Ubuntu 22.04 on my laptop with dualboot
+  - When allocating space for the Ubuntu installation on my drive via Windows Disk Management, I faced an issue that wouldn't allow me to allocate more than 341 MB (way too low for Ubuntu, as it requires 5 GB just to install it)
+  - Apparently there was "immovable files" that were continously being updated as my computer was running, such as the hibernation sys file (used for Windows hibernation; hiberfil.sys in C:/ root) and the pagefile (used to improve Windows stability; pagefile.sys in C:/ root)
+  - To resolve this, I was going to defragment my drive (which physically moves these "immovable files" out of the way to make space for the Ubuntu partition), but realized that defragging a solid state drive (basically what's on all modern laptops) is a bad idea; defrag should only be used on hard disk drives (the ones with spinning magnetic disks)
+  - Instead, I disabled Windows' system restore point, system protection, hibernation, kernel memory dump, and USN journal (probably SHOULD NOT delete this, bc it's used for search indexing and Windows Defender indexing; see https://superuser.com/questions/819901/dangers-of-deleting-c-extend-usnjrnljdata)
+  -  This allowed me to get 46000 MB (45 gigs) of space for Ubuntu, which is enough for me ig
+  -  If this happens to you, see https://www.download3k.com/articles/How-to-shrink-a-disk-volume-beyond-the-point-where-any-unmovable-files-are-located-00432 for a tutorial on how to disable that stuff then reenable it after Ubuntu installation
+- I also needed to disable Secure Boot and BitLocker drive encryption before installing Ubuntu. These can be done with a quick Google search.
+- These are the dualboot tutorials I used: 
+  - https://adamtheautomator.com/install-ubuntu-on-a-partition/
+  - https://www.download3k.com/articles/How-to-shrink-a-disk-volume-beyond-the-point-where-any-unmovable-files-are-located-00432
+- I've already made a bootable USB (SanDisk 128 GB usb stick in the box with the raspberry PI), so skip the Rufus steps
+- Now I'm able to choose between Windows and Ubuntu via Ubuntu's GRUB bootloader on laptop boot.
+- New USB cable for RealSense Camera fixed Eric's below issue
+
 
 11/6/24 (Eric)
 - Got the camera working on the windows computer with 15 fps pretty effectively
