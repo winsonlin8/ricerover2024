@@ -6,6 +6,36 @@ separate document and put the steps into there. The hallmark of
 good documentation is that someone who has no idea about anything 
 related to your project can learn about and replicate it.
 */
+
+11/20/24 (Israel)
+- FINALLY GOT ROS2 AND GAZEBO TO WORK ON UBUNTU DUALBOOT YAY
+- Worked pretty well, although when following this tutorial (https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Gazebo/Gazebo.html) rViz2 (the software used to visualize data published on ROS2 topics), I would get an error about the topic queue being full, so nothing showed up on rviz :(
+  - Message Filter dropping message: frame 'vehicle_blue/lidar_link/gpu_lidar' at time 91.500 for reason 'discarding message because the queue is full' 
+  - idk how to fix yet, but will soon 
+  - Gazebo used around 50 watts unplugged on my laptop, but I forced my Ubuntu to use my laptop's dGPU (rtx 4050) instead of the integrated graphics.
+  - will do proper performance analysis with integrated to see how Gazebo will run on laptops w/o a dGPU
+
+- Intel RealSense also worked nicely on Ubuntu dualboot
+  - after installing from the realsense github (see https://github.com/IntelRealSense/librealsense/blob/development/doc/distribution_linux.md#installing-the-packages), it ran well on my laptop
+  - integrated cpu test
+    - 38 to 40 watts plugged in, 2d stream, 720p 30 fps setting; ran at 50-60 fps
+    - 40-50 watts unplugged, high cpu usage, 3d and 2d stream tested with default and high accuracy presets selected; ran at 30-40 fps
+  - forced dGPU test
+    - 35 to 40 watts plugged in with 3d, same camera settings as above; ran at 60-60 fps
+    - 40 to 50% dGPU usage
+
+- How I monitored power and resource consumption
+  - Power usage (watts): I used ubuntu's built in `upower` command
+    - `upower -e` shows list of devices, we're looking for 'battery_BAT0' to track watts, so we run below command
+    - `upower -i /org/freedesktop/UPower/devices/battery_BAT0` but only show stats for 1 instant. to reload new current stats, I used a python script (see this: https://askubuntu.com/questions/878556/get-battery-status-to-update-more-often-or-on-ac-power-wake)
+    - this is a terminal based UI unfortunately, the better, continuously updating GUI one didn't work (it was a GNOME extension called Power Tracker [https://extensions.gnome.org/extension/7341/power-tracker/])
+      - only supports Ubuntu 24+, but we need to use Ubuntu 22.04 for ROS2 Humble
+      - this would've done the perfect job, as it runs in the background
+  - CPU/GPU usage (%): I used Mission Center (https://snapcraft.io/install/mission-center/ubuntu#install)
+    - It's basically like Windows Task Manager, with the performance tab showing temps, percentage used, etc
+
+
+
 11/19/24 (Israel)
 - Worked on installing Ubuntu 22.04 on my laptop with dualboot
   - When allocating space for the Ubuntu installation on my drive via Windows Disk Management, I faced an issue that wouldn't allow me to allocate more than 341 MB (way too low for Ubuntu, as it requires 5 GB just to install it)
